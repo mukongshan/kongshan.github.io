@@ -1385,7 +1385,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #7ec6f4;
+    background: #e0ff4a;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3188,43 +3188,6 @@ body::before {
     flex-direction: column;
     gap: 15px;
     margin: 0 40px;
-  }
-}
-.sidebar-search-container {
-/* 下边距：与头像拉开距离 */
-  margin-bottom: 20px;
-/* 左右边距 */
-  padding: 0 5px;
-  text-align: center;
-  cursor: pointer;
-  width: auto;
-}
-.search-inner {
-/* 外观：半透明胶囊 */
-  background: rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.05);
-  border-radius: 8px;
-  padding: 10px 0; /* 高度稍微高一点，方便点击 */
-  color: #555;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* 鼠标悬停 */
-.sidebar-search-container:hover .search-inner {
-  background: var(--link-color);
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transform: translateY(-2px);
-}
-/* 暗黑模式 */
-@media (prefers-color-scheme: dark) {
-  .search-inner {
-    background: rgba(255,255,255,0.1);
-    color: #ccc;
   }
 }
 @keyframes avatarFloat {

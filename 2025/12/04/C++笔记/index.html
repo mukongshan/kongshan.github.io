@@ -2908,66 +2908,6 @@ int main() {
 <noscript>
   <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
 </noscript>
-<!-- 1. 侧边栏搜索框 HTML结构 -->
-<div id="sidebar-search-bar" class="sidebar-search-container" style="display: none;">
-  <div class="search-inner">
-    <i class="fa fa-search"></i>
-    <span style="margin-left: 8px;">搜索文章...</span>
-  </div>
-</div>
 
-<!-- 2. 搬运与逻辑脚本 -->
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
-      var searchBar = document.getElementById('sidebar-search-bar');
-      var targetSidebar = document.querySelector('.sidebar-inner');
-
-      if (searchBar && targetSidebar) {
-        // 【搬运】插入到 sidebar-inner 的最前面 (即头像上方)
-        targetSidebar.insertBefore(searchBar, targetSidebar.firstChild);
-
-        // 【显示】搬运完成后显示
-        searchBar.style.display = 'block';
-
-        // 【关键修复】手动绑定点击事件
-        // 因为这是动态插入的元素，主题默认的绑定可能没生效，我们手动触发
-        searchBar.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          // 呼叫 NexT 的搜索弹窗
-          if (typeof LocalSearch === 'function') {
-             // 如果有全局对象，尝试调用（部分版本）
-             // 但更通用的方法是模拟点击或触发 CSS 类
-          }
-
-          // 方案：给 body 添加 search-active 类，这是 NexT 控制弹窗显示的开关
-          document.body.classList.add('search-active');
-
-          // 聚焦输入框
-          setTimeout(function(){
-            var input = document.querySelector('.search-input');
-            if(input) input.focus();
-          }, 100);
-        });
-
-        // 同时也绑定给内部元素，防止点到图标没反应
-        var inner = searchBar.querySelector('.search-inner');
-        inner.addEventListener('click', function(e) {
-           searchBar.click();
-        });
-
-      }
-    }, 300); // 延迟 300ms 确保页面加载完毕
-  });
-
-  // 补充：确保关闭按钮能工作 (NexT自带了，但为了保险)
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('search-close-button') || e.target.closest('.search-close-button')) {
-      document.body.classList.remove('search-active');
-    }
-  });
-</script>
 </body>
 </html>
